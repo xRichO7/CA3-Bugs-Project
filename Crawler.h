@@ -5,7 +5,10 @@
 
 class Crawler : public Bug {
 public:
-    Crawler();
+    Crawler(int id, int x, int y, int directionValue, int health);
+    void move(int boardSize) override;
+    bool isWayBlocked(int boardSize) const override;
 };
 
 #endif
+
