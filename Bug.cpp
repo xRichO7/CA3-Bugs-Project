@@ -13,3 +13,48 @@ Bug::Bug(int bugId, int positionX, int positionY, int directionValue, int bugHea
 
 
 
+int Bug::getId() const
+ {
+    return id;
+}
+
+std::pair<int, int> Bug::getPosition() const {
+    return position;
+}
+
+int Bug::getDirection() const {
+    return direction;
+}
+
+int Bug::getHealth() const {
+    return health;
+}
+
+bool Bug::isAlive() const {
+    return alive;
+}
+
+const std::list<std::pair<int, int>>& Bug::getPath() const {
+    return path;
+}
+
+void Bug::setPosition(int positionX, int positionY) {
+    position.first = positionX;
+    position.second = positionY;
+    path.push_back(position);
+}
+
+void Bug::setDirection(int directionValue) {
+    direction = directionValue;
+}
+
+void Bug::setHealth(int bugHealth) {
+    health = bugHealth;
+}
+
+
+
+void Bug::setAlive(bool isAliveFlag) 
+{
+    alive = isAliveFlag;
+}
