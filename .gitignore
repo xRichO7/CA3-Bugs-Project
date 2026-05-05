@@ -1,0 +1,21 @@
+# Compiled binaries
+*.exe
+*.o
+*.dll
+*.so
+*.dylib
+test.exe
+starter.exe
+
+# IDE folders
+.vscode/
+.idea/
+
+# Build dirs
+build/
+CMakeFiles/
+out/
+
+# OS
+.DS_Store
+Thumbs.db
