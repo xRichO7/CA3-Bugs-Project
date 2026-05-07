@@ -3,7 +3,6 @@
 #include <thread>
 #include <chrono>
 #include "Board/Board.h"
-#include "Bug/Bug.h"
 
 int main() {
     Board board;
@@ -23,16 +22,23 @@ int main() {
         std::cout << "Enter your choice: ";
         std::cin >> choice;
 
+
         switch (choice)
         {
             case 1: {
                 std::string filename = "bugs.txt";
                 board.loadBugs(filename);
+                std::cout << "\nPress Enter to continue...";
+                std::cin.ignore();
+                std::cin.get();
                 break;
             }
 
             case 2:
                 board.displayAllBugs();
+                std::cout << "\nPress Enter to continue...";
+                std::cin.ignore();
+                std::cin.get();
                 break;
 
             case 3: {
@@ -40,19 +46,31 @@ int main() {
                 std::cout << "Enter bug ID: ";
                 std::cin >> id;
                 std::cout << board.findBug(id) << std::endl;
+                std::cout << "\nPress Enter to continue...";
+                std::cin.ignore();
+                std::cin.get();
                 break;
             }
 
             case 4:
                 board.tapBoard();
+                std::cout << "\nPress Enter to continue...";
+                std::cin.ignore();
+                std::cin.get();
                 break;
 
             case 5:
                 board.displayLifeHistory();
+                std::cout << "\nPress Enter to continue...";
+                std::cin.ignore();
+                std::cin.get();
                 break;
 
             case 6:
                 board.displayAllCells();
+                std::cout << "\nPress Enter to continue...";
+                std::cin.ignore();
+                std::cin.get();
                 break;
 
             case 7: {
@@ -65,13 +83,19 @@ int main() {
                     std::this_thread::sleep_for(std::chrono::seconds(1));
                 }
 
-                bug* winner = board.getLastAliveBug();
+                Bug* winner = board.getLastAliveBug();
                 if (winner != nullptr)
                 {
                     std::cout << "\n=== Simulation Complete! ===" << std::endl;
                     std::cout << "Winner: Bug " << winner->getId() << " is the Last Bug Standing!" << std::endl;
+                    std::cout << "\nPress Enter to continue...";
+                    std::cin.ignore();
+                    std::cin.get();
                 } else {
                     std::cout << "No bugs remaining." << std::endl;
+                    std::cout << "\nPress Enter to continue...";
+                    std::cin.ignore();
+                    std::cin.get();
                 }
                 break;
             }
@@ -79,6 +103,9 @@ int main() {
             case 8:
                 std::cout << "Exiting - writing life history to file..." << std::endl;
                 board.writeLifeHistoryToFile();
+                std::cout << "\nPress Enter to continue...";
+                std::cin.ignore();
+                std::cin.get();
                 break;
 
             default:

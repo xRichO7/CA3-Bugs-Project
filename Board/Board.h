@@ -4,8 +4,7 @@
 #include <vector>
 #include <memory>
 #include <string>
-
-#include "Bug.h"
+#include "../Bugs/Bug.h"
 
 class Board
 {

@@ -1,7 +1,7 @@
 #include "Board.h"
-#include "Crawler.h"
-#include "Hopper.h"
-#include "Scorpion.h"
+#include "../Bugs/Crawler.h"
+#include "../Bugs/Hopper.h"
+#include "../Bugs/Scorpion.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
