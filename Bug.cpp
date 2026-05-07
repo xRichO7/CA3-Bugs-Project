@@ -1,13 +1,13 @@
 #include "Bug.h"
 
 Bug::Bug(int bugId, int positionX, int positionY, int directionValue, int bugHealth) {
-    id = bugId;
-    position.first = positionX;
-    position.second = positionY;
-    direction = directionValue;
-    health = bugHealth;
-    alive = true;
-    path.push_back(position);
+    this->id = bugId;
+    this->position.first = positionX;
+    this->position.second = positionY;
+    this->direction = directionValue;
+    this->health = bugHealth;
+    this->alive = true;
+    this->path.push_back(this->position);
 
 }
 
@@ -39,9 +39,9 @@ const std::list<std::pair<int, int>>& Bug::getPath() const {
 }
 
 void Bug::setPosition(int positionX, int positionY) {
-    position.first = positionX;
-    position.second = positionY;
-    path.push_back(position);
+    this->position.first = positionX;
+    this->position.second = positionY;
+    this->path.push_back(this->position);
 }
 
 void Bug::setDirection(int directionValue) {
