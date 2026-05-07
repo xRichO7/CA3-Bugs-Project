@@ -10,26 +10,23 @@ int main() {
 
     do 
     {
-        std::cout <<std::endl << "A Bug's Life Simulation Menu" << std::endl;
-        std::cout << "1. Load bugs from file" << std::endl;
-        std::cout << "2. Display all the bugs" << std::endl;
-        std::cout << "3. Find a bug by ID" << std::endl;
-        std::cout << "4. Tap the board" << std::endl;
-        std::cout << "5. Display life history of all bugs" << std::endl;
-        std::cout << "6. Display all bugs (sorted by ID)" << std::endl;
+        std::cout << std::endl << "=== A Bug's Life Simulation Menu ===" << std::endl;
+        std::cout << "1. Initialize Bug Board (load data from file)" << std::endl;
+        std::cout << "2. Display all Bugs" << std::endl;
+        std::cout << "3. Find a Bug (given an id)" << std::endl;
+        std::cout << "4. Tap the Bug Board (move all, then fight/eat)" << std::endl;
+        std::cout << "5. Display Life History of all Bugs" << std::endl;
+        std::cout << "6. Display all Cells listing their Bugs" << std::endl;
         std::cout << "7. Run simulation" << std::endl;
-        std::cout << "8. Exit" << std::endl;
+        std::cout << "8. Exit (write Life History to file)" << std::endl;
         std::cout << "Enter your choice: ";
         std::cin >> choice;
 
-        switch (choice) 
+        switch (choice)
         {
-
             case 1: {
-                std::string filename;
-                std::cout << "Enter filename: ";
-                std::cin >> filename;
-                board.load(filename);
+                std::string filename = "bugs.txt";
+                board.loadBugs(filename);
                 break;
             }
 
@@ -46,7 +43,7 @@ int main() {
             }
 
             case 4:
-                board.tap();
+                board.tapBoard();
                 break;
 
             case 5:
@@ -54,37 +51,37 @@ int main() {
                 break;
 
             case 6:
-                board.displayAllBugs(); 
+                board.displayAllCells();
+                break;
 
             case 7: {
-
                 std::cout << "Running simulation..." << std::endl;
 
-                while (board.getAliveBugCount() > 1) 
+                while (board.getAliveBugCount() > 1)
                 {
-                    board.tap();
-
+                    board.tapBoard();
+                    board.displayAllBugs();
                     std::this_thread::sleep_for(std::chrono::seconds(1));
                 }
 
                 Bug* winner = board.getLastAliveBug();
                 if (winner != nullptr)
-                 {
-                    std::cout << "Simulation complete. Winner Bug ID: "
-                              << winner->getId() << std::endl;
+                {
+                    std::cout << "\n=== Simulation Complete! ===" << std::endl;
+                    std::cout << "Winner: Bug " << winner->getId() << " is the Last Bug Standing!" << std::endl;
                 } else {
                     std::cout << "No bugs remaining." << std::endl;
                 }
-
                 break;
             }
 
             case 8:
-                std::cout << "Exiting..." << std::endl;
+                std::cout << "Exiting - writing life history to file..." << std::endl;
+                board.writeLifeHistoryToFile();
                 break;
 
             default:
-                std::cout << "Invalid choice. Please Try again" << std::endl;
+                std::cout << "Invalid choice. Please try again" << std::endl;
         }
 
     } while (choice != 8);
