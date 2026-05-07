@@ -51,3 +51,15 @@ void Bug::setHealth(int bugHealth) {
 void Bug::setAlive(bool isAliveFlag) {
     alive = isAliveFlag;
 }
+
+bool Bug::isWayBlocked(int boardSize) const {
+    int x = position.first;
+    int y = position.second;
+
+    if (direction == 1 && y == 0) return true;              // north
+    if (direction == 2 && x == boardSize - 1) return true;  // east
+    if (direction == 3 && y == boardSize - 1) return true;  // south
+    if (direction == 4 && x == 0) return true;              // west
+
+    return false;
+}
