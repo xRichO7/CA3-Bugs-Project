@@ -4,14 +4,15 @@
 Crawler::Crawler(int id, int x, int y, int directionValue, int health)
     : Bug(id, x, y, directionValue, health) {}
 
-bool Crawler::isWayBlocked(int boardSize) const {
+bool Crawler::isWayBlocked(int boardSize) const 
+{
     int x = position.first;
     int y = position.second;
 
-    if (direction == 1 && y == 0) return true;
-    if (direction == 2 && x == boardSize - 1) return true;
-    if (direction == 3 && y == boardSize - 1) return true;
-    if (direction == 4 && x == 0) return true;
+    if (direction == 1 && y == 0) return true; //north
+    if (direction == 2 && x == boardSize - 1) return true; //wast
+    if (direction == 3 && y == boardSize - 1) return true; //south
+    if (direction == 4 && x == 0) return true; //west
 
     return false;
 }
