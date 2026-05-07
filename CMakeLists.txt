@@ -7,4 +7,9 @@ include_directories(.)
 
 add_executable(CA3_Bugs_Project
         BugsProject.cpp
-        BugsProject.h)
+        BugsProject.h
+        Bug.cpp
+        Bug.cpp
+        BugsProject.cpp
+        Bug.cpp
+        cmake-build-debug/BugsProject.h)
