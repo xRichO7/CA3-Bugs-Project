@@ -52,7 +52,8 @@ void Bug::setAlive(bool isAliveFlag) {
     alive = isAliveFlag;
 }
 
-bool Bug::isWayBlocked(int boardSize) const {
+bool Bug::isWayBlocked(int boardSize) const 
+{
     int x = position.first;
     int y = position.second;
 
@@ -63,3 +64,14 @@ bool Bug::isWayBlocked(int boardSize) const {
 
     return false;
 }
+
+std::string Bug::getDirectionString() const
+{
+    if (direction == 1) return "North";
+    if (direction == 2) return "East";
+    if (direction == 3) return "South";
+    if (direction == 4) return "West";
+
+    return "Unknown";
+}
+
