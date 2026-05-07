@@ -75,3 +75,22 @@ std::string Bug::getDirectionString() const
     return "Unknown";
 }
 
+std::string Bug::toString() const
+{
+    std::string aliveStatus;
+
+    if (alive)
+        aliveStatus = "Yes";
+    else
+        aliveStatus = "No";
+
+    std::string result;
+
+    result = "Bug ID: " + std::to_string(id);
+    result += " | Pos: (" + std::to_string(position.first) + "," + std::to_string(position.second) + ")";
+    result += " | Dir: " + getDirectionString();
+    result += " | Health: " + std::to_string(health);
+    result += " | Alive: " + aliveStatus;
+
+    return result;
+}
